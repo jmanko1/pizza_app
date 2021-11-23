@@ -1,7 +1,10 @@
 package pl.jakub.pizza.data.entity.order;
 
+import pl.jakub.pizza.data.entity.ordersize.OrderSizeEntity;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "orders")
@@ -38,4 +41,9 @@ public class OrderEntity {
 
     @Column(name = "token")
     private String token;
+
+    //One order can have many sizes
+    @OneToMany(mappedBy = "order")
+    private Set<OrderSizeEntity> orderSize;
+
 }

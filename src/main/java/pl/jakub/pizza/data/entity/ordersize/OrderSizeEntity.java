@@ -1,5 +1,8 @@
 package pl.jakub.pizza.data.entity.ordersize;
 
+import pl.jakub.pizza.data.entity.order.OrderEntity;
+import pl.jakub.pizza.data.entity.size.SizeEntity;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,7 +20,15 @@ public class OrderSizeEntity {
     @Column(name = "order_id")
     private Integer orderId;
 
-    @Column(name = "count")
-    private Integer count;
+    @Column(name = "size_count")
+    private Integer size_count;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id", insertable = false, updatable = false)
+    private OrderEntity order;
+
+    @ManyToOne
+    @JoinColumn(name = "size_id", insertable = false, updatable = false)
+    private SizeEntity size;
 
 }

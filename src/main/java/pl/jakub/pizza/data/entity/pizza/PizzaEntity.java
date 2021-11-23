@@ -1,6 +1,9 @@
 package pl.jakub.pizza.data.entity.pizza;
 
+import pl.jakub.pizza.data.entity.size.SizeEntity;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "pizzas")
@@ -13,6 +16,10 @@ public class PizzaEntity {
 
     @Column(name = "name")
     private String name;
+
+    //1 pizza can have many sizes
+    @OneToMany(mappedBy = "pizza")
+    private Set<SizeEntity> sizes;
 
     public String getName() {
         return name;
